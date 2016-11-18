@@ -1,12 +1,14 @@
 <component name="libraryTable">
   <library name="jxl">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Google Drive/Fac/M2/Intégration Données (ID)/connexion-jar/connexion-jar/jxl.jar!/" />
-      <root url="jar://$USER_HOME$/Google Drive/Fac/M2/Intégration Données (ID)/connexion-jar/connexion-jar/mdbdriver.jar!/" />
-      <root url="jar://$USER_HOME$/Google Drive/Fac/M2/Intégration Données (ID)/connexion-jar/connexion-jar/ojdbc6_g.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../excel/lib/Excel_JDBC30.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../connexion-jar/connexion-jar/jxl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../connexion-jar/connexion-jar/mdbdriver.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../connexion-jar/connexion-jar/ojdbc6_g.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../connexion-jar/connexion-jar/excel.zip!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../connexion-jar/connexion-jar/excel.zip!/demo/src" />
+    </SOURCES>
   </library>
 </component>

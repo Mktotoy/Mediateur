@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+
 public class XML {
 
     public void lire_XML (String path_fichier) throws FileNotFoundException, SAXException, IOException, ParserConfigurationException{
@@ -36,6 +37,20 @@ public class XML {
             E_1 = (Element) L.item(0);
             System.out.println("num etudiant "+E_1.getTextContent());
         }
+    }
+    public static void main(String[] args) throws ClassNotFoundException {
+        XML l_xml = new XML();
+        try {
+            l_xml.lire_XML("C:\\Users\\thaonzo\\Documents\\2016_2017\\ID\\Mediateur\\data\\Univ_BD_3.xml");
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 }

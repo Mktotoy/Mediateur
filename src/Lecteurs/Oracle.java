@@ -1,7 +1,6 @@
 package Lecteurs;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+
+import java.sql.*;
 
 
 public class Oracle {
@@ -19,13 +18,36 @@ public class Oracle {
         }
 
         try {
-            //this.conn = DriverManager.getConnection("jdbc:oracle:thin:@miage03.dmiage.u-paris10.fr:1521:miage", "thaonzo", "apprentis2014PW");
-            this.conn = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "pottier", "biill483");
+            this.conn = DriverManager.getConnection("jdbc:oracle:thin:@miage03.dmiage.u-paris10.fr:1521:miage", "thaonzo", "apprentis2014PW");
+            //this.conn = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "pottier", "biill483");
 
         } catch (SQLException ex) {
             System.err.println("Erreur de connexion � la base de donn�es.");
         }
     }
+
+    private void request() {
+        Statement requete = null;
+        ResultSet resultat=null;
+
+        try {
+            requete = conn.createStatement();
+            resultat= requete.executeQuery("SELECT Lname FROM Customers WHERE Snum = 2001");
+            while(resultat.next())
+            {
+                /*int nCols = resultat.getColumnCount();
+                /*resultat.getString()*/
+
+
+            }
+        }
+       catch (SQLException e) {
+            e.printStackTrace();
+        }
+        //requete.executeUpdate   : update , insert, create
+
+    }
+
 
     private void deconnexion() {
         try {
