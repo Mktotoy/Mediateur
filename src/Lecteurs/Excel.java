@@ -40,12 +40,12 @@ public class Excel {
             }
             else if (question == 2) {
                 System.out.println("Affichez le nombre des cours par Type (CM, TD ou TP)");
-                resultat = requete.executeQuery("select DISTINCT(ID), Type_cours, count(*) from [2006$] JOIN [2007$] WHERE Statut ='etudiant' GROUP BY Type_Cours");
+                resultat = requete.executeQuery("select Type_cours, COUNT(ID_Cours) from (select DISTINCT(ID_Cours), Type_cours from [2006$] JOIN [2007$]) GROUP BY Type_cours");
                 affiche_res(resultat);
             }
             else if (question == 3) {
                 System.out.println("Affichez la note maximale des cours par Type (CM, TD ou TP)");
-                resultat = requete.executeQuery("SELECT Type_cours, MAX(Note) FROM [2006$] GROUP BY Type_cours");
+                resultat = requete.executeQuery("SELECT Type_cours, MAX(Note) FROM [2006$] JOIN [2007$] WHERE Statut = 'etudiant' GROUP BY Type_cours");
                 affiche_res(resultat);
             }
 
