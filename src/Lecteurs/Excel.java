@@ -10,7 +10,7 @@ public class Excel {
         super();
     }
 
-    public void connexion() throws SQLException, ClassNotFoundException {
+    private void connexion() throws SQLException, ClassNotFoundException {
         try {
             Class.forName("com.hxtt.sql.excel.ExcelDriver");
         } catch (ClassNotFoundException ex) {
@@ -18,16 +18,18 @@ public class Excel {
         }
 
         try {
-            this.conn = DriverManager.getConnection("jdbc:excel:/C:/Users/thaonzo/Documents/2016_2017/ID/Mediateur/data/Source3.xls");
+            this.conn = DriverManager.getConnection("jdbc:excel:/C:/Users/alice/Desktop/Fac/ID/Mediateur/data/Source3.xls"); // Alice
         } catch (SQLException ex) {
             System.err.println("Lecteurs.Excel Erreur de connexion � la base de donn�es.");
         }
     }
 
-    public void request() {
+    public void request_select() throws SQLException, ClassNotFoundException {
         Statement requete = null;
         ResultSet resultat=null;
         ResultSetMetaData rsmd = null;
+
+        this.connexion();
 
         try {
             requete = conn.createStatement();
@@ -50,9 +52,11 @@ public class Excel {
         catch (SQLException e) {
             e.printStackTrace();
         }
+
+        this.deconnexion();
     }
 
-    public void deconnexion() {
+    private void deconnexion() {
         try {
             this.conn.close();
         } catch (SQLException ex) {
@@ -63,7 +67,7 @@ public class Excel {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Excel l_excel = new Excel();
         l_excel.connexion();
-        l_excel.request();
+        l_excel.request_select();
         l_excel.deconnexion();
 
     }

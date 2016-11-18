@@ -18,16 +18,17 @@ public class Oracle {
         }
 
         try {
-            this.conn = DriverManager.getConnection("jdbc:oracle:thin:@miage03.dmiage.u-paris10.fr:1521:miage", "thaonzo", "apprentis2014PW");
-            //this.conn = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "pottier", "biill483");
+            //this.conn = DriverManager.getConnection("jdbc:oracle:thin:@miage03.dmiage.u-paris10.fr:1521:miage", "thaonzo", "apprentis2014PW");
+            this.conn = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "pottier", "biill483");
 
         } catch (SQLException ex) {
             System.err.println("Erreur de connexion a la base de donnees.");
         }
     }
 
-    private void request() {
+    public void request_select() throws SQLException, ClassNotFoundException {
 
+        this.connexion();
         Statement requete = null;
         ResultSet resultat=null;
         ResultSetMetaData rsmd = null;
@@ -39,8 +40,6 @@ public class Oracle {
             int columnsNumber = rsmd.getColumnCount();
             while(resultat.next())
             {
-                /*int nCols = resultat.getColumnCount();
-                /*resultat.getString()*/
                 for (int i = 1; i <= columnsNumber; i++) {
                     if (i > 1) System.out.print(",  ");
                     String columnValue = resultat.getString(i);
@@ -53,8 +52,7 @@ public class Oracle {
        catch (SQLException e) {
             e.printStackTrace();
         }
-        //requete.executeUpdate   : update , insert, create
-
+        this.deconnexion();
     }
 
 
@@ -69,7 +67,7 @@ public class Oracle {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Oracle l_oracle = new Oracle();
         l_oracle.connexion();
-        l_oracle.request();
+        l_oracle.request_select();
         l_oracle.deconnexion();
 
     }
