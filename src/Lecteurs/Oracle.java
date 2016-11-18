@@ -27,17 +27,26 @@ public class Oracle {
     }
 
     private void request() {
+
         Statement requete = null;
         ResultSet resultat=null;
+        ResultSetMetaData rsmd = null;
 
         try {
             requete = conn.createStatement();
-            resultat= requete.executeQuery("SELECT Lname FROM Customers WHERE Snum = 2001");
+            resultat= requete.executeQuery("SELECT * FROM ENSEIGNE");
+            rsmd = resultat.getMetaData();
+            int columnsNumber = rsmd.getColumnCount();
             while(resultat.next())
             {
                 /*int nCols = resultat.getColumnCount();
                 /*resultat.getString()*/
-
+                for (int i = 1; i <= columnsNumber; i++) {
+                    if (i > 1) System.out.print(",  ");
+                    String columnValue = resultat.getString(i);
+                    System.out.print(columnValue + " " + rsmd.getColumnName(i));
+                }
+                System.out.println("");
 
             }
         }
@@ -60,6 +69,7 @@ public class Oracle {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Oracle l_oracle = new Oracle();
         l_oracle.connexion();
+        l_oracle.request();
         l_oracle.deconnexion();
 
     }
