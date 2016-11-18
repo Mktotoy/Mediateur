@@ -22,7 +22,7 @@ public class Excel {
         try {
             this.conn = DriverManager.getConnection("jdbc:odbc:Lecteurs.Excel Files", "", "");
         } catch (SQLException ex) {
-            System.err.println("Lecteurs.Excel Erreur de connexion à la base de données.");
+            System.err.println("Lecteurs.Excel Erreur de connexion ï¿½ la base de donnï¿½es.");
         }
     }
 
@@ -30,7 +30,14 @@ public class Excel {
         try {
             this.conn.close();
         } catch (SQLException ex) {
-            System.err.println("Lecteurs.Excel Erreur de deconnexion à la base de données.");
+            System.err.println("Lecteurs.Excel Erreur de deconnexion ï¿½ la base de donnï¿½es.");
         }
+    }
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        Excel l_excel = new Excel();
+        l_excel.connexion();
+        l_excel.deconnexion();
+
     }
 }

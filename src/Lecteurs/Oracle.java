@@ -19,11 +19,11 @@ public class Oracle {
         }
 
         try {
-            this.conn = DriverManager.getConnection("jdbc:oracle:thin:@miage03.dmiage.u-paris10.fr:1521:miage", "thaonzo", "apprentis2014PW");
-//"jdbc:oracle:thin:@172.19.255.3:1521:MIAGE"
+            //this.conn = DriverManager.getConnection("jdbc:oracle:thin:@miage03.dmiage.u-paris10.fr:1521:miage", "thaonzo", "apprentis2014PW");
+            this.conn = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "pottier", "biill483");
 
         } catch (SQLException ex) {
-            System.err.println("Erreur de connexion à la base de données.");
+            System.err.println("Erreur de connexion ï¿½ la base de donnï¿½es.");
         }
     }
 
@@ -31,7 +31,14 @@ public class Oracle {
         try {
             this.conn.close();
         } catch (SQLException ex) {
-            System.err.println("Erreur de deconnexion à la base de données.");
+            System.err.println("Erreur de deconnexion ï¿½ la base de donnï¿½es.");
         }
+    }
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        Oracle l_oracle = new Oracle();
+        l_oracle.connexion();
+        l_oracle.deconnexion();
+
     }
 }
