@@ -14,13 +14,13 @@ public class Excel {
 
     public void connexion() throws SQLException, ClassNotFoundException {
         try {
-            Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+            Class.forName("com.hxtt.sql.excel.ExcelDriver");
         } catch (ClassNotFoundException ex) {
             System.err.println("Erreur de chargement du driver.");
         }
 
         try {
-            this.conn = DriverManager.getConnection("jdbc:odbc:Lecteurs.Excel Files", "", "");
+            this.conn = DriverManager.getConnection("jdbc:excel:/C:/Users/alice/Desktop/Fac/ID/Mediateur/src/Source3.xls");
         } catch (SQLException ex) {
             System.err.println("Lecteurs.Excel Erreur de connexion � la base de donn�es.");
         }
