@@ -22,7 +22,7 @@ public class Oracle {
             //this.conn = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "pottier", "biill483");
 
         } catch (SQLException ex) {
-            System.err.println("Erreur de connexion � la base de donn�es.");
+            System.err.println("Erreur de connexion a la base de donnees.");
         }
     }
 
@@ -62,7 +62,7 @@ public class Oracle {
         try {
             this.conn.close();
         } catch (SQLException ex) {
-            System.err.println("Erreur de deconnexion � la base de donn�es.");
+            System.err.println("Erreur de deconnexion a la base de donnees.");
         }
     }
 

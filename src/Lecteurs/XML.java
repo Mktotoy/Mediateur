@@ -41,7 +41,7 @@ public class XML {
     public static void main(String[] args) throws ClassNotFoundException {
         XML l_xml = new XML();
         try {
-            l_xml.lire_XML("C:\\Users\\thaonzo\\Documents\\2016_2017\\ID\\Mediateur\\data\\Univ_BD_3.xml");
+            l_xml.lire_XML("C:/Users/thaonzo/Documents/2016_2017/ID/Mediateur/data/Univ_BD_3.xml");
         } catch (SAXException e) {
             e.printStackTrace();
         } catch (IOException e) {

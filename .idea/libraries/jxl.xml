@@ -4,11 +4,9 @@
       <root url="jar://$PROJECT_DIR$/../connexion-jar/connexion-jar/jxl.jar!/" />
       <root url="jar://$PROJECT_DIR$/../connexion-jar/connexion-jar/mdbdriver.jar!/" />
       <root url="jar://$PROJECT_DIR$/../connexion-jar/connexion-jar/ojdbc6_g.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../connexion-jar/connexion-jar/excel.zip!/" />
+      <root url="jar://$PROJECT_DIR$/../connexion-jar/connexion-jar/Excel_JDBC30.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../connexion-jar/connexion-jar/excel.zip!/demo/src" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>
