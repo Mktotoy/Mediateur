@@ -26,7 +26,7 @@ public class Oracle {
         }
     }
 
-    public void request_select() throws SQLException, ClassNotFoundException {
+    public void request_select(int question) throws SQLException, ClassNotFoundException {
 
         this.connexion();
         Statement requete = null;
@@ -35,7 +35,20 @@ public class Oracle {
 
         try {
             requete = conn.createStatement();
-            resultat= requete.executeQuery("SELECT * FROM ENSEIGNE");
+            if (question == 1) {
+                System.out.println("Retournez le nombre d’étudiants dont le pays de Provenance n’est pas la ’France’.");
+                resultat = requete.executeQuery("select * from ETUDIANT WHERE PROVENANCE <> 'fr'");
+            }
+            else if (question == 2) {
+                System.out.println("Affichez le nombre des cours par Type (CM, TD ou TP)");
+                resultat = requete.executeQuery("select type, count(*) from COURS GROUP BY type");
+            }
+            else if (question == 3) {
+                System.out.println("Affichez la note maximale des cours par Type (CM, TD ou TP)");
+                resultat = requete.executeQuery("select c.type, max(note_cours) from inscription i , cours c" +
+                        " where c.numcours=i.numcours" +
+                        " group by c.type");
+            }
             rsmd = resultat.getMetaData();
             int columnsNumber = rsmd.getColumnCount();
             while(resultat.next())
@@ -62,13 +75,5 @@ public class Oracle {
         } catch (SQLException ex) {
             System.err.println("Erreur de deconnexion a la base de donnees.");
         }
-    }
-
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        Oracle l_oracle = new Oracle();
-        l_oracle.connexion();
-        l_oracle.request_select();
-        l_oracle.deconnexion();
-
     }
 }
